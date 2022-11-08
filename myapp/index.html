@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 날씨</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        *{margin:0; padding:0}
+        body{
+            height:100vh;
+            background:url("https://cdn.pixabay.com/photo/2018/05/02/18/23/landscape-3369304_960_720.jpg");
+            background-size:cover;
+            background-position: center center;
+        }
+        #back{
+            position: absolute;
+            top:0; left:0;
+            width:100%;
+            height:100vh;
+            background:rgba(0,0,0,.6);
+            z-index: 1;
+        }
+        .wBody{
+            width:428px; height:926px;
+            /* background:#ffa; */
+            position: absolute;
+            top:50%; left:50%;
+            transform: translate(-50%, -50%);
+        }
+        .weather{
+            box-sizing: border-box;
+            position: absolute;
+            width: 270px;
+            height: 340px;
+            left: 79px;
+            top: 123px;
+
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #FFFFFF;
+            border-radius: 29px;
+        }
+        .name{
+            position: absolute;
+            width: 100%;
+            height: 23px;
+            top: 40px;
+            text-align: center;
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+
+            color: #FFFFFF;
+        }
+        .icon{
+            position: absolute;
+            top:60px;
+            width:100%;
+        }
+        .icon img{
+            display: block;
+            margin: 0 auto;
+        }
+        .main{
+            position: absolute;
+            width: 100%;
+            height: 23px;
+            text-align: center;
+            top: 150px;
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+
+            color: #FFFFFF;
+        }
+        .text{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            height: 70px;
+            top: 732px;
+
+            font-family: 'Noto Sans KR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 35px;
+            text-align: center;
+
+            color: #ffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="back">
+        <div class="wBody">
+            <div class="weather">
+                <div class="name"></div>
+                <div class="icon"></div>
+                <div class="main"></div>
+                <div class="temp"></div>
+            </div>
+            <div class="time">
+        
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+        //$.getJSON("api경로", myapp);
+        $.getJSON("https://api.openweathermap.org/data/2.5/weather?id=1841066&appid=02a146d88b51a0a88235d8a46514d112&units=metric", myapp);
+
+        function myapp(data){
+            var todayWeater = data.name + " " + 
+                              data.weather[0].main + 
+                              " 온도 : " + data.main.temp + "℃" + 
+                              `<img src='http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png'>`;
+
+            var todaytime = new Date(data.dt*1000);
+            
+            var print_time = todaytime.getDate()+"일 "+
+                             todaytime.getHours()+"시";
+
+            // $(".weather").html(todayWeater);
+            // $(".time").html(print_time);
+            $(".name").html(data.name); //도시이름
+            $(".icon").html(`<img src='http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png'>`);
+            $(".main").html(data.weather[0].main); //clear
+            $(".temp").html(data.main.temp + " ℃");
+        }
+
+        
+    </script>
+</body>
+</html>

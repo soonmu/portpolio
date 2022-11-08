@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=bb9a19ab12ab00b80f8fbbbef995cc92"></script>
+    <title>geolocation + 카카오맵을 이용한 현재날씨 정보 받아오기</title>
+</head>
+<body>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <div class="text"></div>
+    <div class="weather">
+
+    </div>
+    <div class="air"></div>
+
+    <script>
+        // 75e631a669cf38006ecbcea2c55d8a59 << 
+            https://api.openweathermap.org/data/2.5/weather?lat=34.794&lon=126.389&appid=75e631a669cf38006ecbcea2c55d8a59
+        var weather = document.querySelector(".weather");
+     
+        $.getJSON("https://api.openweathermap.org/data/2.5/weather?lat=34.794&lon=126.389&appid=75e631a669cf38006ecbcea2c55d8a59")
+
+            function myapp(date){
+                var todayWeater = date. name;
+                $("")
+            }
+        
+    </script> 
+     
+</body>
+</html>

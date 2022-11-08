@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        :root{
+            --btn-bg:#333;
+            --ctr-color:#fff;
+            --cir-bg:#ccc;
+            --light-btn-bg:#69f;
+        }
+        *{margin: 0; padding: 0;}
+        .btn{
+            width: 120px; height: 40px;
+            border-radius: 20px;
+            background: var(--btn-bg);
+            position: relative;
+        }
+        .ctrcle{
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--cir-bg);
+            position: absolute;
+            top: 2px; left: 2px;
+            transition: .3s;
+        }
+        .btn.on .circle{
+            left: 82px;
+        }
+        .text{
+            text-align: center;
+            line-height: 40px;
+            color: var(--btn-color);
+            font-size: .8rem;
+            transform: translateX(10px);
+        }
+
+        .btn.on .text{
+            transform: translateX(-10px);
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="btn">
+        <div class="text">다크모드</div>
+        <div class="circle"></div>
+    </div>
+
+    <script>
+        $(".btn").click(
+            function(){
+                $(".btn").toggle("on");
+                var onoff = $(".btn").hasClass
+            }
+        )
+    </script>
+</body>
+</html>
